@@ -1,0 +1,37 @@
+
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/xrds325/springboot-config
+          username:
+          password:
+          search-paths:
+      label: master
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+      service-url:
+        default-zone: http://localhost:8761/demo/eureka
+        defaultZone: http://localhost:8761/demo/eureka
+
+rabbitmq:
+  host: 192.168.15.16
+  prot: 5672
+  username: nenglong
+  password: 123456
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

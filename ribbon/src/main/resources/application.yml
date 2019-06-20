@@ -1,0 +1,13 @@
+
+server:
+  port: 8084
+spring:
+  application:
+    name: eureka-ribbon
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+      service-url:
+        default-zone: http://localhost:8761/demo/eureka
+        defaultZone: http://localhost:8761/demo/eureka
